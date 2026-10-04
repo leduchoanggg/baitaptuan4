@@ -1,0 +1,29 @@
+﻿@model baitaptuan4.Models.SinhVien
+
+@{
+    ViewData["Title"] = "Xác nhận xóa";
+}
+
+<div class="container mt-4" style="max-width: 600px;">
+    <h3 class="text-danger">Bạn có chắc chắn muốn xóa sinh viên này không?</h3>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">Mã SV</dt>
+        <dd class="col-sm-8">@Model.MaSv</dd>
+
+        <dt class="col-sm-4">Họ và Tên</dt>
+        <dd class="col-sm-8">@Model.HoTen</dd>
+
+        <dt class="col-sm-4">Email</dt>
+        <dd class="col-sm-8">@Model.Email</dd>
+
+        <dt class="col-sm-4">Lớp</dt>
+        <dd class="col-sm-8">@Model.Lop</dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="MaSv" />
+        <button type="submit" class="btn btn-danger">Xóa luôn</button>
+        <a asp-action="Index" class="btn btn-secondary">Hủy bỏ</a>
+    </form>
+</div>

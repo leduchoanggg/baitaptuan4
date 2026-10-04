@@ -1,0 +1,40 @@
+﻿@model IEnumerable<baitaptuan4.Models.SinhVien>
+
+@{
+    ViewData["Title"] = "Danh sách sinh viên";
+}
+
+<div class="container mt-4">
+    <h2>Danh Sách Sinh Viên</h2>
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Thêm Sinh Viên Mới</a>
+    </p>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Mã SV</th>
+                <th>Họ Và Tên</th>
+                <th>Email</th>
+                <th>Ngày Sinh</th>
+                <th>Lớp</th>
+                <th>Thao Tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaSv</td>
+                    <td>@item.HoTen</td>
+                    <td>@item.Email</td>
+                    <td>@(item.NgaySinh.HasValue ? item.NgaySinh.Value.ToString("dd/MM/yyyy") : "")</td>
+                    <td>@item.Lop</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.MaSv" class="btn btn-sm btn-warning">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@item.MaSv" class="btn btn-sm btn-danger">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
